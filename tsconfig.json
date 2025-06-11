@@ -1,18 +1,39 @@
 {
   "compilerOptions": {
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "target": "ES2022",
+    "allowJs": true,
+    "resolveJsonModule": true,
+    "moduleDetection": "force",
+    "isolatedModules": true,
     "allowSyntheticDefaultImports": true,
     "baseUrl": "./",
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "forceConsistentCasingInFileNames": true,
     "module": "commonjs",
-    "target": "es2019",
-    "outDir": "./build",
+    "moduleResolution": "node",
+    "outDir": "dist",
     "paths": {
       "~/*": [
-        "src/*"
+        "./src/*"
       ]
     },
     "sourceMap": true
-  }
+  },
+  "ts-node": {
+    "files": true,
+    "transpileOnly": true,
+    "esm": true,
+    "experimentalSpecifierResolution": "node"
+  },
+  "include": ["src/**/*.ts"],
+  "exclude": [
+    "./coverage",
+    "./dist",
+    "__tests__",
+    "jest.config.js",
+    "node_modules"
+  ]
 }

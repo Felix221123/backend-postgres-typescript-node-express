@@ -2,16 +2,20 @@
   "name": "backend-postgres-typescript-node-express",
   "version": "1.0.0",
   "description": "backend-postgres-typescript-node-express",
+  "type": "commonjs",
   "scripts": {
     "dev": "nodemon",
+    "build": "tsc",
+    "start:prod": "node dist/index.js",
     "lint": "eslint . --ext .ts",
-    "migration:create": "NODE_ENV=local npm run typeorm -- migration:create -n",
-    "setup:local": "NODE_ENV=local npm run typeorm -- migration:run",
-    "setup:test": "NODE_ENV=test npm run typeorm -- migration:run",
-    "test": "NODE_ENV=test jest -i",
-    "test:coverage": "NODE_ENV=test jest --coverage",
-    "typeorm": "ts-node -r tsconfig-paths/register ./node_modules/typeorm/cli.js",
-    "build": "tsc"
+    "test": "jest -i",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage",
+    "db:cli": "typeorm-ts-node-commonjs -d ./src/data-source.ts",
+    "db:migration:generate": "typeorm-ts-node-commonjs -d ./src/data-source.ts migration:generate ./src/packages/database/migrations/InitialMigration",
+    "db:migrate:run": "npm run db:cli -- migration:run",
+    "db:revert": "npm run db:cli -- migration:revert",
+    "db:schema:log": "npm run db:cli -- schema:log"
   },
   "dependencies": {
     "@hapi/joi": "^17.1.1",
@@ -33,6 +37,7 @@
     "pg": "^8.12.0",
     "reflect-metadata": "^0.2.2",
     "typeorm": "^0.3.20",
+    "uuid": "^11.1.0",
     "winston": "^3.14.2",
     "xss-clean": "^0.1.4"
   },
@@ -67,6 +72,7 @@
     "ts-jest": "^29.2.4",
     "ts-node": "^10.9.2",
     "tsconfig-paths": "^4.2.0",
+    "typeorm-ts-node-commonjs": "^0.3.20",
     "typescript": "^5.5.4"
   }
 }

@@ -13,7 +13,7 @@
 node_modules/
 server.cert
 server.key
-.env.local
+.env
 
 
 
