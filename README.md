@@ -70,7 +70,7 @@ if you want to run your development in https mode you would need to develop a an
 
 ## Setup
 
-1. Create a `.env` file on the root of the project based on `.env.example`
+1. Create a `.env` and a `.env.local`file on the root of the project based on `.env.example`
 2. Create a database in your pgAdmin and make sure to include the details in your env files
 3. Start the development server running `$ npm run dev`
 
